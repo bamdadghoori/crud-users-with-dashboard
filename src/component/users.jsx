@@ -46,7 +46,7 @@ const Users = () => {
                             <div className="user">
                                 <div className="row">
                                 <div className="col-md-6">
-                                {/* <img src={element.avatar}/> */}
+                                <img src={element.avatar}/>
                            
                                 </div>
                                 <div className="col-md-6">

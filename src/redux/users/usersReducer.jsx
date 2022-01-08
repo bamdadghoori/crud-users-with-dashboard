@@ -19,6 +19,7 @@ export const usersReducer=(state=initialState,action)=>{
           console.log(action.payload.firstName)
           return {...state,users:[...state.users,{
             first_name:action.payload.firstName,last_name:action.payload.lastName
+            ,avatar:action.payload.avatar
           }]}
       default:
           return state

@@ -22,6 +22,7 @@ export const AddUser=(user)=>{
        payload:{
            firstName:user.firstName,
            lastName:user.lastName,
+           avatar:user.avatar
        }
    }
 }
