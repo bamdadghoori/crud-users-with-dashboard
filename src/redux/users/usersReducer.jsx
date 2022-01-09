@@ -1,5 +1,5 @@
 import {GetUserRequest,GetUserSuccess,GetUserFail,AddUser} from "./usersAction"
-import { ADD_USER, GET_USER_FAIL, GET_USER_REQUEST, GET_USER_SUCCESS } from "./usersTypes"
+import { ADD_USER, GET_USER_FAIL, GET_USER_REQUEST, GET_USER_SUCCESS, UPDATE_USER } from "./usersTypes"
  const initialState={
      users:[],
      error:"",
@@ -16,11 +16,25 @@ export const usersReducer=(state=initialState,action)=>{
       case GET_USER_FAIL:
         return {users:[],error:action.payload,loading:false}
         case ADD_USER:
-          console.log(action.payload.firstName)
+         
           return {...state,users:[...state.users,{
             first_name:action.payload.firstName,last_name:action.payload.lastName
             ,avatar:action.payload.avatar
           }]}
+          case UPDATE_USER:
+            console.log("x")
+            return{...state,users:state.users.map((element)=>{
+              console.log(action.payload)
+              
+               if(element.id==action.payload.id){
+                console.log("a")
+                 return {...element,first_name:action.payload.firstName,last_name:action.payload.lastName
+                  ,avatar:action.payload.avatar};
+               }
+               else{
+                 return element;
+               }
+            })}
       default:
           return state
   }

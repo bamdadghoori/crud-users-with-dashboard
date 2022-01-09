@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 const UserCreator = () => {
   let navigate = useNavigate();
   const handleClick=()=>{
-  navigate("/userDetails")
+  navigate("/addUser")
   }
     return ( <>
     <div className="container">

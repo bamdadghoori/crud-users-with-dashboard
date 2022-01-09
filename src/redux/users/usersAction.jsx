@@ -1,4 +1,4 @@
-import { GET_USER_REQUEST,GET_USER_SUCCESS,GET_USER_FAIL,ADD_USER} from "./usersTypes"
+import { GET_USER_REQUEST,GET_USER_SUCCESS,GET_USER_FAIL,ADD_USER,UPDATE_USER} from "./usersTypes"
 
 export const GetUserRequest=()=>{
   return {type:GET_USER_REQUEST} 
@@ -25,4 +25,16 @@ export const AddUser=(user)=>{
            avatar:user.avatar
        }
    }
+}
+export const UpdateUser=(user)=>{
+    return{
+        type:UPDATE_USER,
+        payload:{
+            id:user.id,
+            firstName:user.firstName,
+            lastName:user.lastName,
+            avatar:user.avatar
+        }
+    }
+ 
 }

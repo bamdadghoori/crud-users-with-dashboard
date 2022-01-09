@@ -3,8 +3,10 @@ import { useSelector,useDispatch } from "react-redux";
 import { GetUserRequest,GetUserFail,GetUserSuccess } from "../redux/users/usersAction";
 import { useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
+    let navigate=useNavigate();
     const state = useSelector(state => state)
     const dispatch = useDispatch();
     const getUsers=()=>{
@@ -22,6 +24,11 @@ const Users = () => {
                console.log(er)
             }
         }
+    }
+
+    const handleUpdate=(e,id)=>{
+       e.preventDefault()
+       navigate(`/editUser/${id}`)
     }
   useEffect(()=>{
     dispatch(getUsers())
@@ -60,7 +67,7 @@ const Users = () => {
                             
                             </div>
                             <div>
-                                <button className="btn btn-primary btn-update">
+                                <button className="btn btn-primary btn-update" onClick={(e)=>{handleUpdate(e,element.id)}}>
                                     update
                                 </button>
                                 <button className="btn btn-danger">

@@ -13,7 +13,8 @@ function App() {
   <h1>salam</h1>
   <Provider store={store}>
   <Routes>
-    <Route path="/userDetails" element={<UserDetails/>}/>
+    <Route path="/addUser" element={<UserDetails/>}/>
+    <Route path="/editUser/:id" element={<UserDetails/>}/>
   </Routes>
     <UserCreator/>
      <Users/>
