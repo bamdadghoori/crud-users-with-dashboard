@@ -4,13 +4,18 @@ import { useDispatch,useSelector } from "react-redux";
 import { AddUser, UpdateUser } from "../redux/users/usersAction";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-const UserDetails = () => {
+import { useLocation } from "react-router-dom";
+const UserDetails = (props) => {
+  console.log(props.NewIdAdder)
+  // const state=useLocation();
+  // console.log(state)
   const {id}=useParams();
-
+    // var newId=13
 
     let navigate=useNavigate()
      const dispatch = useDispatch()
       const[user,setUser]=useState({
+        
           firstName:"",
           lastName:"",
           avatar:""
@@ -40,6 +45,10 @@ const UserDetails = () => {
     const handleChange=(e)=>{
      setUser({...user,[e.target.name]:e.target.value})
     }
+
+    const adder=()=>{
+      props.NewIdAdder()
+    }
     const handleSubmit=(e)=>{
       
     e.preventDefault();
@@ -49,7 +58,11 @@ const UserDetails = () => {
     }
     else{
       console.log(user)
-      dispatch(AddUser(user))
+      dispatch(AddUser(user,props.NewId))
+      adder();
+      // props.NewId=props.NewId+1
+      // setUser({...user,id:newId+1})
+      console.log(user)
       navigate("/")
     }
     

@@ -30,6 +30,9 @@ const Users = () => {
        e.preventDefault()
        navigate(`/editUser/${id}`)
     }
+    const handleDelete=(e,id)=>{
+        navigate(`/deleteUser/${id}`)
+    }
   useEffect(()=>{
     dispatch(getUsers())
   }
@@ -39,9 +42,11 @@ const Users = () => {
     return ( 
         <>
         {console.log(state)}
+        <h1>salam</h1>
          <h1>users</h1>
          <div className="container">
          <div className="row">
+         
             {
                 state.loading===true ? (
                     <h1>is loading</h1>
@@ -49,7 +54,7 @@ const Users = () => {
                 (
                     state.users.map((element,index)=>{
                         return(
-                        <div key={index} className="col-md-3">
+                        <div key={index} className="col-md-4">
                             <div className="user">
                                 <div className="row">
                                 <div className="col-md-6">
@@ -63,6 +68,7 @@ const Users = () => {
                             </div>
                             <div className="lastName">
                             {element.last_name} 
+                            {element.id}
                             </div>
                             
                             </div>
@@ -70,7 +76,7 @@ const Users = () => {
                                 <button className="btn btn-primary btn-update" onClick={(e)=>{handleUpdate(e,element.id)}}>
                                     update
                                 </button>
-                                <button className="btn btn-danger">
+                                <button className="btn btn-danger" onClick={(e)=>{handleDelete(e,element.id)}}>
                                     delete
                                 </button>
                             </div>
