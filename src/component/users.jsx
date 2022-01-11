@@ -42,7 +42,7 @@ const Users = () => {
     return ( 
         <>
         {console.log(state)}
-        <h1>salam</h1>
+        {/* <h1>salam</h1> */}
          <h1>users</h1>
          <div className="container">
          <div className="row">
