@@ -5,13 +5,18 @@ import { AddUser, UpdateUser } from "../redux/users/usersAction";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import * as yup from 'yup';
 const UserDetails = (props) => {
+  let schema=yup.object().shape({
+    firstName:yup.string().required("name and family are required"),
+    lastName:yup.string().required("name and family are required")
+  })
   console.log(props.NewIdAdder)
   // const state=useLocation();
   // console.log(state)
   const {id}=useParams();
     // var newId=13
-
+         
     let navigate=useNavigate()
      const dispatch = useDispatch()
       const[user,setUser]=useState({
@@ -20,6 +25,7 @@ const UserDetails = (props) => {
           lastName:"",
           avatar:""
       })
+      const[errors,setErrors]=useState([])
       const users = useSelector(state => state.users)
       console.log(users)
       useEffect(()=>{
@@ -49,22 +55,41 @@ const UserDetails = (props) => {
     const adder=()=>{
       props.NewIdAdder()
     }
-    const handleSubmit=(e)=>{
+    const validate=async()=>{
+      try{
+        const validateResult=await schema.validate(user,{abortEarly:false})
+       setErrors([])
+        return true
+       }
+       catch(er){
+         console.log([...er.errors])
+         setErrors([...er.errors])
+        console.log(errors)
+         return false
+       }
+    }
+    const handleSubmit=async(e)=>{
       
     e.preventDefault();
-    if(id){
-    dispatch(UpdateUser({...user,id:id}))
-    navigate("/")
-    }
-    else{
-      console.log(user)
-      dispatch(AddUser(user,props.NewId))
-      adder();
-      // props.NewId=props.NewId+1
-      // setUser({...user,id:newId+1})
-      console.log(user)
+ const isValid= await validate();
+   console.log(errors)
+   if(isValid){
+    // if()
+     if(id){
+      dispatch(UpdateUser({...user,id:id}))
       navigate("/")
-    }
+      }
+      else{
+        console.log(user)
+        dispatch(AddUser(user,props.NewId))
+        adder();
+        // props.NewId=props.NewId+1
+        // setUser({...user,id:newId+1})
+        console.log(user)
+        navigate("/")
+      }
+   }
+ 
     
     }
   const handleImageChange=(e)=>{
@@ -77,9 +102,22 @@ const UserDetails = (props) => {
     return ( <>
             
             <div class="wrapper fadeInDown">
+              
+             
   <div id="formContent">
   <div className="fadeIn first">
-                {id ? (<h2>Update User</h2>):(<h2>Create User</h2>) }  
+                {id ? (<h2>Update User</h2>):(<h2>Create User</h2>) }
+                {errors.length!=0  && (
+                <>
+                <div className="error-group">
+                  {errors.map((element)=>{
+                      return <div className="alert alert-danger">{element}</div>
+                  })}
+                
+                </div>
+                </>
+              
+              )}  
                 <Link  className="fa fa-window-close close-link" to="/" ></Link>
               </div>
 
