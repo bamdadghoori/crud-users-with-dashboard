@@ -1,10 +1,13 @@
+body {
+  background: #f5f5f5;
+}
 .user {
   margin-bottom: 6vh;
-  box-shadow: #bdbdbd 2px 2px 5px 2px;
+  box-shadow: #a5a5af 2px 2px 5px 2px;
   padding: 1vw;
   display: flex;
   font-size: 2.2vh;
-  background-color: #bbdefb;
+  background-color: #57bc90;
   border-radius: 10px;
 }
 .firstLast {
@@ -42,12 +45,13 @@
   padding: 20px;
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
-  background: #fff;
+  background: #57bc90;
   padding: 30px;
   width: 90%;
   max-width: 450px;
@@ -83,7 +87,7 @@ h2.active {
 input[type="button"],
 input[type="submit"],
 input[type="reset"] {
-  background-color: #56baed;
+  background-color: #015249;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -107,7 +111,7 @@ input[type="reset"] {
 input[type="button"]:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover {
-  background-color: #39ace7;
+  background-color: #57bc90;
 }
 
 input[type="button"]:active,
@@ -126,7 +130,7 @@ label {
 }
 input[type="text"],
 input[type="file"] {
-  background-color: #f6f6f6;
+  background-color: #f5f5f5;
   border: none;
   color: #0d0d0d;
   padding: 15px 32px;
@@ -294,7 +298,9 @@ input[type="text"]:placeholder {
   position: absolute;
   left: 1vw;
   top: 1vh;
+  color: #015249;
 }
+
 .img-preview {
   width: 50px;
   height: 50px;
@@ -304,4 +310,39 @@ input[type="text"]:placeholder {
 }
 .delete-buttons {
   margin-bottom: 2vh;
+}
+.btn-primary {
+  background: #015249 !important;
+}
+.source-code {
+  text-align: center;
+  font-size: 2.5vh;
+  position: relative;
+  top: 4vh;
+  width: fit-content !important;
+  width: -moz-fit-content !important;
+  justify-content: center;
+  left: 15vw;
+}
+.crud-title {
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+  top: 3vh;
+  margin-bottom: 2vh;
+  font-size: 3vh;
+}
+.users {
+  text-align: center;
+  margin-bottom: 5vh;
+}
+.alert {
+  background-color: #f5876e !important;
+}
+.forcible {
+  color: #dc3545;
+  position: absolute;
+  right: 1vw;
+  top: 6vh;
+  font-size: 4vh;
 }

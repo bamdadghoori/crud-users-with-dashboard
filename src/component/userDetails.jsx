@@ -8,8 +8,8 @@ import { useLocation } from "react-router-dom";
 import * as yup from 'yup';
 const UserDetails = (props) => {
   let schema=yup.object().shape({
-    firstName:yup.string().required("name and family are required"),
-    lastName:yup.string().required("name and family are required")
+    firstName:yup.string().required("first name is required"),
+    lastName:yup.string().required("last name is required")
   })
   console.log(props.NewIdAdder)
   // const state=useLocation();
@@ -109,9 +109,10 @@ const UserDetails = (props) => {
                 {id ? (<h2>Update User</h2>):(<h2>Create User</h2>) }
                 {errors.length!=0  && (
                 <>
-                <div className="error-group">
+                <div className="alert alert-danger">
+                <i class="fa fa-exclamation-triangle"></i>
                   {errors.map((element)=>{
-                      return <div className="alert alert-danger">{element}</div>
+                      return <div >{element}</div>
                   })}
                 
                 </div>
@@ -128,11 +129,13 @@ const UserDetails = (props) => {
         <div style={{"position":"relative"}}>
         <label htmlFor="firstName">First Name:</label>
       <input type="text" id="firstName" class="fadeIn second" name="firstName" value={user.firstName} onChange={handleChange}/>
+      <div className="forcible">*</div>
         </div>
         <div style={{"position":"relative"}}>
       
       <label htmlFor="lastName">Last Name:</label>
       <input type="text" id="lastName" class="fadeIn third" name="lastName" value={user.lastName} onChange={handleChange}/>
+      <div className="forcible">*</div>
       </div>
       <div style={{"position":"relative"}}>
       
