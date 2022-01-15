@@ -1,5 +1,6 @@
 body {
   background: #f5f5f5;
+  font-family: "Roboto" !important;
 }
 .user {
   margin-bottom: 6vh;
@@ -11,9 +12,11 @@ body {
   border-radius: 10px;
 }
 .firstLast {
-  display: flex;
-
+  display: block;
+  color: #f5f5f5;
   width: fit-content;
+  padding: 10px;
+  margin-top: 3vh;
 }
 .firstName {
   margin-right: 0.5vw;
@@ -28,7 +31,7 @@ body {
   font-size: 2.2vh !important;
 }
 .btn-update {
-  margin-bottom: 1vh;
+  margin-right: 3vw;
 }
 .divCreator {
   float: right;
@@ -60,6 +63,7 @@ body {
   -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
+  color: #f5f5f5;
 }
 
 #formFooter {
@@ -106,6 +110,7 @@ input[type="reset"] {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  font-family: "Roboto" !important;
 }
 
 input[type="button"]:hover,
@@ -335,6 +340,7 @@ input[type="text"]:placeholder {
 .users {
   text-align: center;
   margin-bottom: 5vh;
+  /* font-weight: bold; */
 }
 .alert {
   background-color: #f5876e !important;
@@ -345,4 +351,24 @@ input[type="text"]:placeholder {
   right: 1vw;
   top: 6vh;
   font-size: 4vh;
+}
+.user-buttons {
+  text-align: center;
+  margin-top: 1vh !important;
+}
+@media (max-width: 600px) {
+  .btn {
+    width: fit-content;
+    width: -moz-fit-content;
+  }
+  .divCreator {
+    margin-top: 7vh;
+  }
+  .source-code {
+    left: unset;
+  }
+  .btn-update {
+    margin-bottom: 7vw;
+    margin-right: unset;
+  }
 }

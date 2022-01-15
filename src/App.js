@@ -1,4 +1,5 @@
 import { Route,Routes,BrowserRouter } from 'react-router-dom';
+import "@fontsource/roboto"
 import './App.css';
 import Users from './component/users';
 import { store } from "./redux/store";

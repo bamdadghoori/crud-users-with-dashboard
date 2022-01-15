@@ -139,13 +139,13 @@ const UserDetails = (props) => {
       </div>
       <div style={{"position":"relative"}}>
       
-      <label htmlFor="avatar" >avatar image:</label>
+      <label htmlFor="avatar" >Avatar Image:</label>
       <input type="file" className="fadeIn third" onChange={handleImageChange} id="avatar"/>
       </div>
       <div>
       <img src={user.avatar}  className="img-preview" alt="no image selected"/>
       </div>
-      <input type="submit" className="fadeIn fourth" value="submit"/>
+      <input type="submit" className="fadeIn fourth" value="Submit"/>
       
     </form>
 

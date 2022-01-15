@@ -13,7 +13,7 @@ const UserCreator = () => {
     return ( <>
     <div className="container">
       <div className="divCreator">
-          <button className="btn btn-primary" onClick={handleClick}>add user</button>
+          <button className="btn btn-primary" onClick={handleClick}>Add User</button>
       </div>
       </div>
     </> );

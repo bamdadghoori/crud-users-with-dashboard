@@ -43,7 +43,7 @@ const Users = () => {
         <>
         {console.log(state)}
        
-         <h1 className="users">Users:</h1>
+         <h5 className="users">Users:</h5>
          {/* <hr/> */}
          <div className="container">
          <div className="row">
@@ -55,33 +55,34 @@ const Users = () => {
                 (
                     state.users.map((element,index)=>{
                         return(
-                        <div key={index} className="col-md-4">
+                        <div key={index} className="col-md-3">
                             <div className="user">
                                 <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-6 col-4">
                                 <img src={element.avatar}/>
                            
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-md-6 col-4">
                                 <div className="firstLast">
                             <div className="firstName">
                             {element.first_name} 
                             </div>
                             <div className="lastName">
                             {element.last_name} 
-                            {element.id}
+                          
                             </div>
                             
                             </div>
-                            <div>
+                            
+                                </div>
+                                <div className="user-buttons col-md-12 col-4">
                                 <button className="btn btn-primary btn-update" onClick={(e)=>{handleUpdate(e,element.id)}}>
-                                    update
+                                    Update
                                 </button>
-                                <button className="btn btn-danger" onClick={(e)=>{handleDelete(e,element.id)}}>
-                                    delete
+                                <button className="btn btn-danger btn-delete" onClick={(e)=>{handleDelete(e,element.id)}}>
+                                    Delete
                                 </button>
                             </div>
-                                </div>
                               
                            
                             </div>
