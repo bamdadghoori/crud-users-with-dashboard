@@ -55,7 +55,7 @@ const Users = () => {
                 (
                     state.users.map((element,index)=>{
                         return(
-                        <div key={index} className="col-md-3">
+                        <div key={index} className="col-md-6 col-lg-4 col-xl-3">
                             <div className="user">
                                 <div className="row">
                                 <div className="col-md-6 col-4">

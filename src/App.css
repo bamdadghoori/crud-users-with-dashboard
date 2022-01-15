@@ -372,3 +372,20 @@ input[type="text"]:placeholder {
     margin-right: unset;
   }
 }
+@media screen and (min-width: 601px) and (max-width: 1050px) {
+  .btn {
+    width: fit-content !important;
+  }
+  .divCreator {
+    margin-top: 7vh;
+  }
+  .source-code {
+    left: unset;
+  }
+  #formContent {
+    top: -24vh;
+  }
+  .forcible {
+    top: 3vh;
+  }
+}
