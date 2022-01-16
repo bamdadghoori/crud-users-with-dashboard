@@ -7,21 +7,23 @@ import { useNavigate } from "react-router-dom";
 
 const Users = () => {
     let navigate=useNavigate();
+    // connecting to store
     const state = useSelector(state => state)
     const dispatch = useDispatch();
     const getUsers=()=>{
+        // async action using redux-thunk
         return async function(dispatch){
             try{
-            //    console.log(dispatch(GetUserRequest())) 
+            
             dispatch(GetUserRequest())
              const response= await axios.get("https://reqres.in/api/users?page=2")
              
-             console.log(response.data)
+            
              dispatch(GetUserSuccess(response.data.data))
             }
             catch(er){
                 dispatch(GetUserFail(er))
-               console.log(er)
+               
             }
         }
     }
@@ -41,10 +43,10 @@ const Users = () => {
    
     return ( 
         <>
-        {console.log(state)}
+        
        
          <h5 className="users">Users:</h5>
-         {/* <hr/> */}
+         
          <div className="container">
          <div className="row">
          

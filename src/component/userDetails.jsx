@@ -6,19 +6,19 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import * as yup from 'yup';
+// this page can add user and update it both
 const UserDetails = (props) => {
+  // using yup component to validate
   let schema=yup.object().shape({
     firstName:yup.string().required("first name is required"),
     lastName:yup.string().required("last name is required")
   })
-  console.log(props.NewIdAdder)
-  // const state=useLocation();
-  // console.log(state)
+  
+  // use id to see if we are in update mode
   const {id}=useParams();
-    // var newId=13
-         
     let navigate=useNavigate()
      const dispatch = useDispatch()
+    //  a local state is used to add user to redux store or update it
       const[user,setUser]=useState({
         
           firstName:"",
@@ -27,17 +27,15 @@ const UserDetails = (props) => {
       })
       const[errors,setErrors]=useState([])
       const users = useSelector(state => state.users)
-      console.log(users)
+     
       useEffect(()=>{
         
          if(id){
-         
+                // update mode
                 const currentUser=users.filter((element)=>element.id==id)
                 
-                    //  if(element.id==id){
-                    //    return element
-                    //  }
-               console.log(currentUser)
+               
+              
               setUser({
                 firstName:currentUser[0].first_name,
                 lastName:currentUser[0].last_name,
@@ -51,20 +49,22 @@ const UserDetails = (props) => {
     const handleChange=(e)=>{
      setUser({...user,[e.target.name]:e.target.value})
     }
-
+      
     const adder=()=>{
+      // see NewIdAdder function in app.js
       props.NewIdAdder()
     }
     const validate=async()=>{
+      // validating 
       try{
         const validateResult=await schema.validate(user,{abortEarly:false})
        setErrors([])
         return true
        }
        catch(er){
-         console.log([...er.errors])
+        
          setErrors([...er.errors])
-        console.log(errors)
+        
          return false
        }
     }
@@ -72,20 +72,18 @@ const UserDetails = (props) => {
       
     e.preventDefault();
  const isValid= await validate();
-   console.log(errors)
+  
    if(isValid){
-    // if()
+    
      if(id){
+      //  update mode
       dispatch(UpdateUser({...user,id:id}))
       navigate("/")
       }
       else{
-        console.log(user)
+        // adding mode
         dispatch(AddUser(user,props.NewId))
         adder();
-        // props.NewId=props.NewId+1
-        // setUser({...user,id:newId+1})
-        console.log(user)
         navigate("/")
       }
    }
@@ -93,7 +91,7 @@ const UserDetails = (props) => {
     
     }
   const handleImageChange=(e)=>{
-   
+    //  to preview selected image
      if(e.target.files){
          setUser({...user,avatar:URL.createObjectURL(e.target.files[0])})
         

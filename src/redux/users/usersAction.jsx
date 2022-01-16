@@ -1,4 +1,4 @@
-import { type } from "@testing-library/user-event/dist/type"
+
 import { GET_USER_REQUEST,GET_USER_SUCCESS,GET_USER_FAIL,ADD_USER,UPDATE_USER,DELETE_USER} from "./usersTypes"
 
 export const GetUserRequest=()=>{

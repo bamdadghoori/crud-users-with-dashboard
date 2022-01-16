@@ -12,6 +12,8 @@ import { useState } from 'react';
 import Delete from './component/Delete';
 function App() {
   const[newId,setNewId]=useState(13)
+
+  // add id to new user that we created in adduser page
   const NewIdAdder=()=>{
   
    setNewId(newId+1)
@@ -21,11 +23,12 @@ function App() {
   
   
   <Provider store={store}>
- 
+ {/* routing */}
   <Routes>
     <Route path="/addUser" element={<UserDetails NewId={newId} NewIdAdder={NewIdAdder}/>}/>
     <Route path="/editUser/:id" element={<UserDetails/>}/>
     <Route path="/deleteUser/:id" element={<Delete/>}/>
+   
 
   </Routes>
   <div className="container">
