@@ -4,6 +4,11 @@ import { GetUserRequest,GetUserFail,GetUserSuccess } from "../redux/users/usersA
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import PaginatedItems from "./paginatedItems";
+
+
+
+
 
 const Users = () => {
     let navigate=useNavigate();
@@ -53,48 +58,50 @@ const Users = () => {
             {
                 state.loading===true ? (
                     <h1>is loading</h1>
-                ):
-                (
-                    state.users.map((element,index)=>{
-                        return(
-                        <div key={index} className="col-md-6 col-lg-4 col-xl-3">
-                            <div className="user">
-                                <div className="row">
-                                <div className="col-md-6 col-4">
-                                <img src={element.avatar}/>
+                ):(
+                    <PaginatedItems HandleDelete={handleDelete} HandleUpdate={handleUpdate}/>
+                )
+            //     (
+            //         state.users.map((element,index)=>{
+            //             return(
+            //             <div key={index} className="col-md-6 col-lg-4 col-xl-3">
+            //                 <div className="user">
+            //                     <div className="row">
+            //                     <div className="col-md-6 col-4">
+            //                     <img src={element.avatar}/>
                            
-                                </div>
-                                <div className="col-md-6 col-4">
-                                <div className="firstLast">
-                            <div className="firstName">
-                            {element.first_name} 
-                            </div>
-                            <div className="lastName">
-                            {element.last_name} 
+            //                     </div>
+            //                     <div className="col-md-6 col-4">
+            //                     <div className="firstLast">
+            //                 <div className="firstName">
+            //                 {element.first_name} 
+            //                 </div>
+            //                 <div className="lastName">
+            //                 {element.last_name} 
                           
-                            </div>
+            //                 </div>
                             
-                            </div>
+            //                 </div>
                             
-                                </div>
-                                <div className="user-buttons col-md-12 col-4">
-                                <button className="btn btn-primary btn-update" onClick={(e)=>{handleUpdate(e,element.id)}}>
-                                    Update
-                                </button>
-                                <button className="btn btn-danger btn-delete" onClick={(e)=>{handleDelete(e,element.id)}}>
-                                    Delete
-                                </button>
-                            </div>
+            //                     </div>
+            //                     <div className="user-buttons col-md-12 col-4">
+            //                     <button className="btn btn-primary btn-update" onClick={(e)=>{handleUpdate(e,element.id)}}>
+            //                         Update
+            //                     </button>
+            //                     <button className="btn btn-danger btn-delete" onClick={(e)=>{handleDelete(e,element.id)}}>
+            //                         Delete
+            //                     </button>
+            //                 </div>
                               
                            
-                            </div>
-                           </div>
+            //                 </div>
+            //                </div>
                            
-                            </div>
-                )
-                        }
-              )  
-                ) 
+            //                 </div>
+            //     )
+            //             }
+            //   )  
+            //     ) 
                 }
             
 

@@ -21,7 +21,7 @@ const Delete = () => {
       <h2>Delete user</h2>
       <div>are you sure to delete this user?</div>
       <div className="delete-buttons">
-          <button className="btn btn-danger" onClick={handleYesButton}>Yes</button>
+          <button className="btn btn-danger btn-delete" onClick={handleYesButton}>Yes</button>
           <button className="btn btn-warning btn-dont-delete" onClick={handleNoButton}>No</button>
       </div>
       </div>
