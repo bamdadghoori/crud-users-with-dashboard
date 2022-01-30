@@ -1,15 +1,15 @@
 import PaginationButtons from "./paginationButtons";
-import { useState } from "react";
+
 const Pagination = (props) => {
- const [currentPage,SetCurrentPage]=useState(props.CurrentPage);
+
  const pagesNumber=parseInt(props.PagesNumber);
     
  const pagesNum=[];
 
-     console.log(props.PagesNumber)
+    // pagesNum is array to show numbers in pagination buttons section
      for (let i=1;i<=pagesNumber;i++){
-           console.log(props.PagesNumber)
-         console.log(i)
+           
+       
              pagesNum.push(i)
      };
      return (<div>
@@ -38,11 +38,7 @@ const Pagination = (props) => {
         
           
           return(
-         
-          // <li className="page-link " onClick={()=>props.ChangePage(element)}>
-              
-          //     {element}
-          //     </li>
+        
               <PaginationButtons Element={element} CurrentPage={props.CurrentPage} ChangePage={props.ChangePage}/>
               
               ) 

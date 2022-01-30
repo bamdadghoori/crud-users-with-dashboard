@@ -1,32 +1,34 @@
 import { Route,Routes,BrowserRouter } from 'react-router-dom';
 import "@fontsource/roboto"
 import './App.css';
+//  uncomment this users page below to see the main mode with pagination!!
 import Users from './component/pagination/users';
+
+//  uncomment this users page below to see the simple mode without pagination!!
+// import Users from './component/users';
 import { store } from "./redux/store";
 import { Provider} from "react-redux";
-// import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css";
 import UserDetails from './component/userDetails';
 import UserCreator from './component/userCreator';
 import 'font-awesome/css/font-awesome.min.css';
 import { useState } from 'react';
 import Delete from './component/Delete';
-import PaginatedUsers from './component/paginatedUsers';
+
 import { GetUserRequest,GetUserFail,GetUserSuccess } from "./redux/users/usersAction";
 import { useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
-// import PaginatedItems from './component/paginatedItems';
 
-import Pagination from './component/pagination/pagination';
-import Items from './component/pagination/Items';
+import { useSelector,useDispatch } from "react-redux";
+
+
+
 function App() {
   const[newId,setNewId]=useState(13)
   const users = useSelector(state => state.users)
-  const [currentPage,setCurrentPage]=useState(1)
+ 
   console.log(users)
 
-  let navigate=useNavigate();
+
     // connecting to store
    
     console.log(users)
@@ -49,13 +51,7 @@ function App() {
         }
     }
 
-    const handleUpdate=(e,id)=>{
-       e.preventDefault()
-       navigate(`/editUser/${id}`)
-    }
-    const handleDelete=(e,id)=>{
-        navigate(`/deleteUser/${id}`)
-    }
+   
   useEffect(()=>{
     dispatch(getUsers())
   }
@@ -89,15 +85,10 @@ function App() {
     <UserCreator/>
     </div>
     </div>
-    {/* <Items currentItems={currentItems} /> */}
-    {/* <PaginatedUsers/> */}
+  
      <Users Items={users} />
      
-    {/* { state.loading===true ? (
-                    <h1>is loading</h1>):(
-                      <PaginatedItems HandleDelete={handleDelete} HandleUpdate={handleUpdate}/>
-                    )
-                    } */}
+ 
      
   </Provider>
   
