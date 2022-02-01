@@ -13,7 +13,7 @@ import UserCreator from './component/userCreator';
 import 'font-awesome/css/font-awesome.min.css';
 import { useState } from 'react';
 import Delete from './component/Delete';
-
+import SearchBox from './component/searchbox';
 import { GetUserRequest,GetUserFail,GetUserSuccess } from "./redux/users/usersAction";
 import { useEffect } from "react";
 import axios from "axios";
@@ -25,13 +25,13 @@ import { useSelector,useDispatch } from "react-redux";
 function App() {
   const[newId,setNewId]=useState(13)
   const users = useSelector(state => state.users)
- 
-  console.log(users)
+  const[searchText,setSearchText]=useState()
+  
 
 
     // connecting to store
    
-    console.log(users)
+    
     const dispatch = useDispatch();
     const getUsers=()=>{
         // async action using redux-thunk
@@ -63,6 +63,16 @@ function App() {
    setNewId(newId+1)
    return newId
   }
+
+  const handleSearch=(searchText)=>{
+    if(searchText){
+      setSearchText(searchText)
+    }
+  }
+
+  const resetSearch=()=>{
+    setSearchText(null)
+  }
   return (<>
   {
 } 
@@ -79,14 +89,17 @@ function App() {
   </Routes>
   <div className="container">
     <div className="crud-title">Crud Users</div>
+   
   <div className="row">
-  <div className="source-code">To see the source code:<a href="https://github.com/bamdadghoori/crud-users-react-redux">https://github.com/bamdadghoori/crud-users-react-redux</a></div>
-  
+ 
+  <SearchBox  HandleSearch={handleSearch}/>
+    
+    <div className="source-code">To see the source code:<a href="https://github.com/bamdadghoori/crud-users-react-redux">https://github.com/bamdadghoori/crud-users-react-redux</a></div>
     <UserCreator/>
     </div>
     </div>
   
-     <Users Items={users} />
+     <Users Items={users} SearchText={searchText} ResetSearch={resetSearch}/>
      
  
      

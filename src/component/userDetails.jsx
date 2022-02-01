@@ -17,7 +17,7 @@ const UserDetails = (props) => {
   // use id to see if we are in update mode
   const {id}=useParams();
     let navigate=useNavigate()
-    console.log(id)
+   
      const dispatch = useDispatch()
     //  a local state is used to add user to redux store or update it
       const[user,setUser]=useState({

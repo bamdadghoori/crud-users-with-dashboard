@@ -10,29 +10,31 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const Users = () => {
+const Users = (props) => {
+    var users;
+    var isFound=true;
+    var showBackButton=false;
+    var searchText=props.SearchText
+    if(searchText){
+         isFound=false
+         var showBackButton=true;
+            users=props.Items.filter((element)=>{
+               if(element.first_name.toLowerCase().trim().includes(searchText.toLowerCase().trim())||element.last_name.toLowerCase().trim().includes(searchText.toLowerCase().trim())){
+                   isFound=true;
+                  return element;
+               }
+           })
+           if(isFound==false){
+            users=props.Items
+           }
+    }
+    else{
+         users=props.Items
+    }
     let navigate=useNavigate();
     // connecting to store
     const state = useSelector(state => state)
-    const dispatch = useDispatch();
-    const getUsers=()=>{
-        // async action using redux-thunk
-        return async function(dispatch){
-            try{
-            
-            dispatch(GetUserRequest())
-             const response= await axios.get("https://reqres.in/api/users?page=2")
-             
-            
-             dispatch(GetUserSuccess(response.data.data))
-            }
-            catch(er){
-                dispatch(GetUserFail(er))
-               
-            }
-        }
-    }
-
+   
     const handleUpdate=(e,id)=>{
        e.preventDefault()
        navigate(`/editUser/${id}`)
@@ -40,11 +42,9 @@ const Users = () => {
     const handleDelete=(e,id)=>{
         navigate(`/deleteUser/${id}`)
     }
-  useEffect(()=>{
-    dispatch(getUsers())
-  }
+
     
-  ,[])
+  
    
     return ( 
         <>
@@ -53,6 +53,8 @@ const Users = () => {
          <h5 className="users">Users:</h5>
          
          <div className="container">
+         {!isFound &&(<div className="alert alert-danger search-error">  <i class="fa fa-exclamation-triangle"></i>There are no users match with the textbox</div>)}
+         {showBackButton && (<button className="btn btn-primary back-button" onClick={props.ResetSearch}>Back to home page</button>)}
          <div className="row">
          
             {
@@ -60,7 +62,7 @@ const Users = () => {
                     <h1>is loading</h1>
                 ):
                 (
-                    state.users.map((element,index)=>{
+                    users.map((element,index)=>{
                         return(
                         <div key={index} className="col-md-6 col-lg-4 col-xl-3">
                             <div className="user">

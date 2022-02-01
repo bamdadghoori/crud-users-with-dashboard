@@ -9,11 +9,11 @@ const UserCreator = () => {
   navigate("/addUser")
   }
     return ( <>
-    <div className="container">
+   
       <div className="divCreator">
           <button className="btn btn-primary" onClick={handleClick}>Add User</button>
       </div>
-      </div>
+      
     </> );
 }
  

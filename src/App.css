@@ -37,6 +37,11 @@ body {
 }
 .divCreator {
   float: right;
+  width: fit-content;
+  width: -moz-fit-content;
+  margin-left: 12vw;
+  position: relative;
+  top: 1.5vh;
 }
 
 /* modol */
@@ -335,23 +340,30 @@ input[type="text"]:placeholder {
   text-align: center;
   font-size: 2.5vh;
   position: relative;
-  top: 4vh;
+  top: 2vh;
   width: fit-content !important;
   width: -moz-fit-content !important;
   justify-content: center;
-  left: 15vw;
+  left: 4vw;
 }
 .crud-title {
   text-align: center;
   font-weight: bold;
   position: relative;
   top: 3vh;
-  margin-bottom: 2vh;
+  margin-bottom: 7vh;
   font-size: 3vh;
+}
+.divCreator .btn {
+  background: #ff6a00 !important;
+}
+.input-group .btn {
+  z-index: 1 !important;
 }
 .users {
   text-align: center;
   margin-bottom: 5vh;
+  margin-top: 5vh;
   /* font-weight: bold; */
 }
 .alert {
@@ -407,12 +419,53 @@ input[type="text"]:placeholder {
   border: 1px solid #f60;
   color: #ff6444 !important;
 }
-
+.search-button {
+  height: 40px;
+  top: 5px;
+  left: -2.5vw;
+  background: #ff6a00 !important;
+  border: unset;
+  width: unset;
+}
+.search-text {
+  height: 40px !important;
+  background: #fff !important;
+  border: #ff6a00 solid 1px !important;
+  border-radius: 5px 0 0 5px !important;
+}
+.form-floating > label {
+  top: -4px !important;
+}
+.form-control:focus {
+  box-shadow: unset;
+}
+.search-section {
+  width: fit-content !important;
+}
+.btn-primary:hover {
+  border: unset;
+}
+.search-error {
+  width: fit-content;
+  width: -moz-fit-content;
+}
+.back-button {
+  background: #ff6a00 !important;
+  border: unset;
+  width: unset;
+  margin-bottom: 2vh;
+}
 /* responsive */
 @media (max-width: 600px) {
   .btn {
     width: fit-content;
     width: -moz-fit-content;
+  }
+  .search-button {
+    left: -10vw;
+  }
+  .search-section {
+    left: 20vw;
   }
   .divCreator {
     margin-top: 7vh;
@@ -427,8 +480,19 @@ input[type="text"]:placeholder {
   .page-link {
     padding: 6vw;
   }
+  .search-error {
+    margin-top: 5vh;
+  }
+  .back-button {
+    margin-top: 3vh;
+  }
 }
 @media screen and (min-width: 601px) and (max-width: 1050px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
   .btn {
     width: fit-content !important;
   }
@@ -445,6 +509,47 @@ input[type="text"]:placeholder {
     top: 3vh;
   }
   .page-link {
-    padding: 6vw;
+    padding: 2vw;
+  }
+  .search-button {
+    left: -3vw;
+    padding: 0px;
+    width: 6vw !important;
+    height: 5vh;
+  }
+  .search-section {
+    left: 4vw;
+  }
+  .search-section label {
+    top: 10px !important;
+  }
+  .search-text {
+    height: 5vh !important;
+  }
+  .search-error {
+    margin-top: 5vh;
+  }
+  .back-button {
+    margin-top: 3vh;
+  }
+  .divCreator .btn {
+    position: relative;
+    right: 12vw;
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1100px) {
+  .search-text {
+    height: 8vh !important;
+  }
+  .search-button {
+    height: 8vh !important;
+  }
+  .search-error {
+    margin-top: 7vh;
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 1290px) {
+  .search-error {
+    margin-top: 7vh;
   }
 }

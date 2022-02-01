@@ -14,7 +14,7 @@ const Pagination = (props) => {
      };
      return (<div>
         <ul className="pagination"> 
-        {console.log(pagesNum)}
+ 
         <li className="page-link" onClick={()=>{
            if(props.CurrentPage>1){
              props.ChangePage(props.CurrentPage-1)}
